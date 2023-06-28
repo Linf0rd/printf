@@ -12,10 +12,7 @@ int print_integer(va_list args)
 	int n;
 	int count = 0;
 
-	va_list args_copy;
-	va_copy(args_copy, args);
-
-	n = va_arg(args_copy, int);
+	n = va_arg(args, int);
 
 	if (n < 0)
 	{
@@ -25,12 +22,10 @@ int print_integer(va_list args)
 	}
 
 	if (n / 10)
-		count += print_integer(args_copy);
+		count += print_integer(args);
 
 	_putchar((n % 10) + '0');
 	count++;
-
-	va_end(args_copy);
 
 	return (count);
 }
